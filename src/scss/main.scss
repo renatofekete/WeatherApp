@@ -11,7 +11,11 @@ $fontcolor: #ffffff;
   margin: 0;
   box-sizing: border-box;
 }
-
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 body {
   height: 100vh;
   width: 100vw;
@@ -26,4 +30,36 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-weight: bold;
+  justify-content: center;
+  position: relative;
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+  }
+  h1 {
+    font-size: 56px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    justify-self: start;
+  }
+  h2 {
+    margin-bottom: 20px;
+    font-size: 46px;
+  }
+  .display {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .img {
+      width: 100px;
+    }
+    p {
+      font-size: 26px;
+    }
+  }
 }

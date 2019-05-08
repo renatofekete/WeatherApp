@@ -11,9 +11,9 @@ window.onload = () => {
           return response.json()
         })
         .then(data => {
-          let time = new Date(1557343800)
-          console.log(time.getUTCFullYear())
+          let time = new Date(1557349499 * 1000)
           displayWeather(data, time)
+          console.log(data.weather[0].icon)
         })
     })
   }
@@ -21,9 +21,14 @@ window.onload = () => {
 let displayWeather = (weather, time) => {
   const app = document.getElementById('app')
   app.innerHTML = `
-  <h1>${weather.name}</h1>
-  <p>${time.getFullYear()}</p>
-  <h2> ${weather.main.temp}° </h2>
-  <div class="img"><img src ='http://openweathermap.org/img/w/${weather.weather.icon}.png' alt="Prognoza" srcset=""></div>
+  <div class="title">
+  <h1>${weather.name}, ${weather.sys.country}</h1>
+  <p class="date">${time.toLocaleString('hr-HR', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric' })}:00h</p>
+  </div>
+  <h2> ${Math.round(weather.main.temp - 273.15)}° </h2>
+  <div class="display">
+  <div class="img"><img src ='http://openweathermap.org/img/w/${weather.weather[0].icon}.png' alt="${weather.weather[0].main}" srcset=""></div>
+  <p>${weather.weather[0].description}</p>
+  </div>
   `
 }
