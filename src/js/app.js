@@ -27,7 +27,7 @@ let displayWeather = (weather, time) => {
   </div>
   <h2> ${Math.round(weather.main.temp - 273.15)}° </h2>
   <div class="display">
-  <div class="img"><img src ='http://openweathermap.org/img/w/${weather.weather[0].icon}.png' alt="${weather.weather[0].main}" srcset=""></div>
+  <div class="img"><img src ='https://openweathermap.org/img/w/${weather.weather[0].icon}.png' alt="${weather.weather[0].main}" srcset=""></div>
   <p>${weather.weather[0].description}</p>
   </div>
   `
