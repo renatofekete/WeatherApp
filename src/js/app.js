@@ -6,7 +6,7 @@ window.onload = () => {
       let key = '225fbbbcb8501c0acfbea4a81315fe4e'
       lat = position.coords.latitude
       long = position.coords.longitude
-      fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=${key}&lat=${lat}&lon=${long}&units=metrics`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?APPID=${key}&lat=${lat}&lon=${long}`)
         .then(response => {
           return response.json()
         })
