@@ -11,9 +11,8 @@ window.onload = () => {
           return response.json()
         })
         .then(data => {
-          let time = new Date(1557349499 * 1000)
+          let time = new Date(data.dt * 1000)
           displayWeather(data, time)
-          console.log(data.weather[0].icon)
         })
     })
   }
@@ -25,10 +24,12 @@ let displayWeather = (weather, time) => {
   <h1>${weather.name}, ${weather.sys.country}</h1>
   <p class="date">${time.toLocaleString('hr-HR', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric' })}:00h</p>
   </div>
+  <div class="main">
   <h2> ${Math.round(weather.main.temp - 273.15)}° </h2>
   <div class="display">
   <div class="img"><img src ='https://openweathermap.org/img/w/${weather.weather[0].icon}.png' alt="${weather.weather[0].main}" srcset=""></div>
   <p>${weather.weather[0].description}</p>
+  </div>
   </div>
   `
 }

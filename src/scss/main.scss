@@ -3,6 +3,18 @@ $mainbgcolor: #0253b3;
 $secondarybgcolor: #18a4e0;
 $fontcolor: #ffffff;
 
+// Break points
+@mixin m {
+  @media only screen and (max-width: 500px) {
+    @content;
+  }
+}
+@mixin vert {
+  @media only screen and (max-width: 730px) and (orientation: landscape) {
+    @content;
+  }
+}
+
 /* RESET */
 *,
 *::after,
@@ -22,6 +34,7 @@ body {
   color: $fontcolor;
   background: linear-gradient($mainbgcolor, $secondarybgcolor);
   font-family: 'Muli', sans-serif;
+  font-size: 100%;
 }
 
 #app {
@@ -34,32 +47,59 @@ body {
   justify-content: center;
   position: relative;
   .title {
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    position: absolute;
-    top: 20px;
+    height: 30%;
+    border-bottom: 1px solid red;
+  }
+  .main {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    @include vert {
+      flex-direction: row;
+    }
   }
   h1 {
-    font-size: 56px;
+    font-size: 3em;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin: 20px;
     justify-self: start;
+    @include m {
+      font-size: 2em;
+    }
+    @include vert {
+      font-size: 2em;
+    }
   }
   h2 {
     margin-bottom: 20px;
-    font-size: 46px;
+    font-size: 2.5em;
+    @include vert {
+      margin-bottom: 10px;
+      font-size: 2em;
+    }
   }
   .display {
     display: flex;
     align-items: center;
     flex-direction: column;
+    @include vert {
+      flex-direction: row;
+    }
     .img {
       width: 100px;
     }
     p {
-      font-size: 26px;
+      font-size: 2em;
+      @include vert {
+        font-size: 2em;
+      }
     }
   }
 }
