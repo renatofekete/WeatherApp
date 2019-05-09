@@ -33,3 +33,4 @@ let displayWeather = (weather, time) => {
   </div>
   `
 }
+
