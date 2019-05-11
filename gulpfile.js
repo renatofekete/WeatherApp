@@ -9,6 +9,11 @@ const html = done => {
     .pipe(gulp.dest('docs'))
   done()
 }
+const assets = done => {
+  gulp.src('src/assets/**/*')
+    .pipe(gulp.dest('docs/assets'))
+  done()
+}
 const css = done => {
   gulp.src('src/scss/main.scss')
     .pipe(sass({
@@ -29,9 +34,10 @@ const js = done => {
 }
 
 gulp.task('html', html)
+gulp.task('assets', assets)
 gulp.task('sass', css)
 gulp.task('js', js)
-gulp.task('default', gulp.parallel(html, css, js))
+gulp.task('default', gulp.parallel(html, assets, css, js))
 gulp.task('watch', () => {
   gulp.watch('src/index.html', gulp.parallel(html))
   gulp.watch('src/scss/**/*', gulp.parallel(css))
