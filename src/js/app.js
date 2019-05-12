@@ -5,7 +5,8 @@ window.onload = () => {
   const key = 'd4bf21aa78d1417f919046208837be54'
   const app = document.getElementById('app')
   // TEMPLATES
-  const displayWeather = (weather, time) => {
+  const displayWeather = (weather) => {
+    let time = new Date(weather.data[0].ts * 1000)
     app.innerHTML = `
       <div class="title">
       <h1>${weather.data[0].city_name}, ${weather.data[0].country_code}</h1>
@@ -34,8 +35,7 @@ window.onload = () => {
         return response.json()
       })
       .then(data => {
-        let time = new Date(data.data[0].ts * 1000)
-        displayWeather(data, time)
+        displayWeather(data)
       })
   }
 
