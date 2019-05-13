@@ -35,6 +35,7 @@ body {
   background: linear-gradient($mainbgcolor, $secondarybgcolor);
   font-family: 'Muli', sans-serif;
   font-size: 100%;
+  position: relative;
 }
 
 #app {
@@ -52,10 +53,10 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 30%;
+    height: 40%;
   }
   .main {
-    height: 70%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -84,6 +85,24 @@ body {
       font-size: 2em;
     }
   }
+  h3 {
+    font-size: 1.2em;
+    @include m {
+      font-size: 0.7em;
+    }
+    @include vert {
+      font-size: 1em;
+    }
+  }
+  h4 {
+    font-size: 1em;
+    @include m {
+      font-size: 0.6em;
+    }
+    @include vert {
+      font-size: 0.8em;
+    }
+  }
   .display {
     display: flex;
     align-items: center;
@@ -101,6 +120,38 @@ body {
       }
     }
   }
+  .days {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+  }
+  .card {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .img {
+      width: 70px;
+      @include m {
+        width: 40px;;
+      }
+    }
+  }
+}
+nav {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  z-index: 1;
+  p {
+    margin: 10px;
+  }
+}
+.active {
+  font-weight: bold;
+  cursor: pointer;
 }
 .load {
   width: 50px;
@@ -110,7 +161,6 @@ body {
   border-radius: 50%;
   transform: rotate(0deg); 
   animation: circle 1s infinite linear;
-
 }
 @keyframes circle{
   from {
