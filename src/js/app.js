@@ -93,5 +93,6 @@ window.onload = () => {
     e.preventDefault()
     searchWeather()
     search.reset()
+    search.blur()
   })
 }
