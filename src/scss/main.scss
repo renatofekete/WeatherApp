@@ -84,6 +84,7 @@ main {
 	position: relative;
 	height: 40px;
 	margin: 20px 0;
+	overflow: hidden;
 	@include l {
 		width: 80%;
 		margin: 20px auto;
@@ -107,6 +108,10 @@ main {
 				font-size: 0.8rem;
 			}
 		}
+		&:focus ~ .line,
+		&:valid ~ .line {
+			transform: translateX(0%);
+		}
 	}
 	&--icon {
 		color: $searchfontcolor;
@@ -116,6 +121,16 @@ main {
 		transform: translateY(-50%);
 		display: flex;
 		cursor: pointer;
+	}
+	.line {
+		position: absolute;
+		width: 100%;
+		height: 3px;
+		background: $secondarybgcolor;
+		left: 0;
+		bottom: 0;
+		transform: translateX(-100%);
+		transition: transform 0.3s ease;
 	}
 }
 #app {
