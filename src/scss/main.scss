@@ -25,7 +25,7 @@ $width: 950px;
 }
 
 @mixin vert {
-	@media only screen and (max-width: 730px) and (orientation: landscape) {
+	@media only screen and (max-width: 740px) and (orientation: landscape) {
 		@content;
 	}
 }
@@ -55,17 +55,17 @@ button {
 	outline: none;
 	background: transparent;
 }
+html {
+	width: 100%;
+	height: 100%;
+}
 body {
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	color: $fontcolor;
-	background: linear-gradient($mainbgcolor, $secondarybgcolor);
 	font-family: 'Muli', sans-serif;
 	font-size: 16px;
 	position: relative;
-	@include vert {
-		min-height: 100%;
-	}
 }
 
 main {
@@ -73,7 +73,8 @@ main {
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	height: 100%;
+	min-height: 100%;
+	background: linear-gradient($mainbgcolor, $secondarybgcolor);
 	@include l {
 		width: 100%;
 	}
@@ -146,6 +147,9 @@ main {
 	font-style: italic;
 	@include m {
 		justify-content: space-evenly;
+	}
+	@include vert {
+		flex-grow: 0;
 	}
 }
 .top {
