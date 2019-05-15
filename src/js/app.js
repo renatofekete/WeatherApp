@@ -92,5 +92,6 @@ window.onload = () => {
   search.addEventListener('submit', (e) => {
     e.preventDefault()
     searchWeather()
+    search.reset()
   })
 }
