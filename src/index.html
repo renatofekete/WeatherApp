@@ -9,17 +9,31 @@
 			href="https://fonts.googleapis.com/css?family=Muli:400,700"
 			rel="stylesheet"
 		/>
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
 		<link rel="stylesheet" href="css/main.css" />
 	</head>
 
 	<body>
-		<nav>
-			<p class="show-one">Show one day</p>
-			<p class="show-five active">Show five days</p>
-		</nav>
-		<div id="app">
-			<div class="load"></div>
-		</div>
+		<main>
+			<form method="post" class="search">
+				<input
+					type="text"
+					placeholder="Enter city name e.g. London"
+					class="search--bar"
+				/>
+				<button type="submit" class="search--icon">
+					<i class="material-icons">
+						search
+					</i>
+				</button>
+			</form>
+			<div id="app">
+				<div class="load"></div>
+			</div>
+		</main>
 		<script src="js/app.js"></script>
 	</body>
 </html>

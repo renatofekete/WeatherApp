@@ -2,171 +2,280 @@
 $mainbgcolor: #0253b3;
 $secondarybgcolor: #18a4e0;
 $fontcolor: #ffffff;
+$searchfontcolor: #0254bb;
+$searchbackground: #f1f5f8;
+
+$width: 950px;
 
 // Break points
-@mixin m {
-  @media only screen and (max-width: 500px) {
-    @content;
-  }
+@mixin h {
+	@media only screen and (max-height: 850px) {
+		@content;
+	}
 }
+@mixin l {
+	@media only screen and (max-width: 1140px) {
+		@content;
+	}
+}
+@mixin m {
+	@media only screen and (max-width: 500px) {
+		@content;
+	}
+}
+
 @mixin vert {
-  @media only screen and (max-width: 730px) and (orientation: landscape) {
-    @content;
-  }
+	@media only screen and (max-width: 730px) and (orientation: landscape) {
+		@content;
+	}
+}
+
+%search-text {
+	font-weight: bold;
+	font-style: italic;
+	font-size: 1.188rem;
 }
 
 /* RESET */
 *,
 *::after,
 *::before {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-body {
-  height: 100vh;
-  width: 100vw;
-  color: $fontcolor;
-  background: linear-gradient($mainbgcolor, $secondarybgcolor);
-  font-family: 'Muli', sans-serif;
-  font-size: 100%;
-  position: relative;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
+img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+button {
+	border: none;
+	outline: none;
+	background: transparent;
+}
+body {
+	height: 100vh;
+	width: 100vw;
+	color: $fontcolor;
+	background: linear-gradient($mainbgcolor, $secondarybgcolor);
+	font-family: 'Muli', sans-serif;
+	font-size: 16px;
+	position: relative;
+}
+
+main {
+	width: $width;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	height: 100%;
+	@include l {
+		width: 100%;
+	}
+	@include m {
+		padding: 10px;
+	}
+}
+
+.search {
+	color: $searchfontcolor;
+	position: relative;
+	height: 40px;
+	margin: 20px 0;
+	@include l {
+		width: 80%;
+		margin: 20px auto;
+	}
+	&--bar {
+		width: 100%;
+		height: 100%;
+		padding-left: 15px;
+		background: $searchbackground;
+		border: none;
+		outline: none;
+		color: $searchfontcolor;
+		@extend %search-text;
+		@include m {
+			font-size: 0.8rem;
+		}
+		&::placeholder {
+			@extend %search-text;
+			color: gray;
+			@include m {
+				font-size: 0.8rem;
+			}
+		}
+	}
+	&--icon {
+		color: $searchfontcolor;
+		position: absolute;
+		right: 15px;
+		top: 50%;
+		transform: translateY(-50%);
+		display: flex;
+		cursor: pointer;
+	}
+}
 #app {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-weight: bold;
-  justify-content: center;
-  position: relative;
-  .title {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 40%;
-  }
-  .main {
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    @include vert {
-      flex-direction: row;
-    }
-  }
-  h1 {
-    font-size: 3em;
-    text-transform: uppercase;
-    margin: 20px;
-    justify-self: start;
-    @include m {
-      font-size: 2em;
-    }
-    @include vert {
-      font-size: 2em;
-    }
-  }
-  h2 {
-    margin-bottom: 20px;
-    font-size: 2.5em;
-    @include vert {
-      margin-bottom: 10px;
-      font-size: 2em;
-    }
-  }
-  h3 {
-    font-size: 1.2em;
-    @include m {
-      font-size: 0.7em;
-    }
-    @include vert {
-      font-size: 1em;
-    }
-  }
-  h4 {
-    font-size: 1em;
-    @include m {
-      font-size: 0.6em;
-    }
-    @include vert {
-      font-size: 0.8em;
-    }
-  }
-  .display {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    @include vert {
-      flex-direction: row;
-    }
-    .img {
-      width: 100px;
-    }
-    p {
-      font-size: 2em;
-      @include vert {
-        font-size: 2em;
-      }
-    }
-  }
-  .days {
-    display: flex;
-    flex-direction: row;
-    max-width: 100%;
-  }
-  .card {
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    .img {
-      width: 70px;
-      @include m {
-        width: 40px;;
-      }
-    }
-  }
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-weight: bold;
+	font-style: italic;
+	@include m {
+		justify-content: space-evenly;
+	}
 }
-nav {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  display: flex;
-  z-index: 1;
-  p {
-    margin: 10px;
-  }
+.top {
+	text-align: center;
+	margin-bottom: 120px;
+	@include l {
+		margin-bottom: 20px;
+	}
+	@include h {
+		margin-bottom: 20px;
+	}
+	@include vert {
+		margin-bottom: 20px;
+	}
+	&--title {
+		font-size: 3rem;
+		margin-bottom: 40px;
+		@include vert {
+			font-size: 2rem;
+			margin-bottom: 20px;
+		}
+		@include m {
+			font-size: 2rem;
+			margin-bottom: 20px;
+		}
+	}
+	&--date {
+		font-size: 1rem;
+	}
 }
-.active {
-  font-weight: bold;
-  cursor: pointer;
+.current {
+	margin-bottom: 120px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	@include l {
+		margin-bottom: 20px;
+	}
+	@include h {
+		margin-bottom: 20px;
+	}
+	@include vert {
+		flex-direction: row;
+		justify-content: space-around;
+		margin-bottom: 20px;
+	}
+	&--temperature {
+		font-size: 3rem;
+		@include vert {
+			font-size: 2rem;
+		}
+		@include m {
+			font-size: 1.5rem;
+		}
+	}
+	&--display {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		@include vert {
+			flex-direction: row;
+		}
+	}
+	.img {
+		width: 100px;
+		display: flex;
+		align-items: center;
+		margin: 20px 0;
+		@include vert {
+			width: 70px;
+			margin: 0;
+		}
+		@include h {
+			width: 70px;
+			margin: 0;
+		}
+	}
+	p {
+		font-size: 2rem;
+		@include vert {
+			font-size: 1rem;
+		}
+		@include m {
+			font-size: 1rem;
+		}
+	}
 }
+.days {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 0 10px;
+	@include m {
+		margin: 0 5px;
+	}
+	&--date {
+		font-size: 1.188rem;
+		@include vert {
+			font-size: 0.8rem;
+		}
+		@include m {
+			font-size: 0.8rem;
+		}
+	}
+	.img {
+		width: 70px;
+		@include vert {
+			width: 50px;
+		}
+		@include m {
+			width: 50%;
+		}
+	}
+	&--temperature {
+		font-size: 1rem;
+		@include vert {
+			font-size: 0.7rem;
+		}
+		@include m {
+			font-size: 0.6rem;
+		}
+	}
+}
+
 .load {
-  width: 50px;
-  height: 50px;
-  border: 10px solid white;
-  border-bottom: 10px solid transparent;
-  border-radius: 50%;
-  transform: rotate(0deg); 
-  animation: circle 1s infinite linear;
+	width: 50px;
+	height: 50px;
+	border: 10px solid white;
+	border-bottom: 10px solid transparent;
+	border-radius: 50%;
+	transform: rotate(0deg);
+	animation: circle 1s infinite linear;
 }
-@keyframes circle{
-  from {
-    transform: rotate(0deg); 
-  }
-  to {
-    transform: rotate(359deg); 
-  }
+
+@keyframes circle {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(359deg);
+	}
 }
