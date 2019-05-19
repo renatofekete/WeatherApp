@@ -112,8 +112,8 @@ window.onload = () => {
   // SEARCH
   search.addEventListener('submit', e => {
     e.preventDefault()
+    app.innerHTML = `<div class="load"></div>`
     searchWeather()
-    search.reset()
     searchBar.blur()
   })
 }
